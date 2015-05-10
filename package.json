@@ -1,0 +1,28 @@
+{
+  "name": "tennu-rust-help",
+  "version": "1.0.0",
+  "description": "Tennu plugin providing commands for learning Rust.",
+  "main": "plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Havvy/tennu-rust-help.git"
+  },
+  "keywords": [
+    "rust",
+    "cargo",
+    "tennu-plugin"
+  ],
+  "author": "Ryan Scheel (Havvy)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Havvy/tennu-rust-help/issues"
+  },
+  "homepage": "https://github.com/Havvy/tennu-rust-help",
+  "dependencies": {
+    "bluebird": "^2.9.25",
+    "node-fetch": "^1.2.1"
+  }
+}
