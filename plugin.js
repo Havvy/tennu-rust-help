@@ -4,6 +4,18 @@ fetch.Promise = require("bluebird");
 const format = require("util").format;
 const inspect = require("util").inspect;
 
+// https://stackoverflow.com/questions/1267283/how-can-i-create-a-zerofilled-value-using-javascript
+// Note(Havvy): Does *not* work if num === 0.
+function zeroPad (num, numZeros) {
+    var an = Math.abs (num);
+    var digitCount = 1 + Math.floor (Math.log (an) / Math.LN10);
+    if (digitCount >= numZeros) {
+        return num;
+    }
+    var zeroString = Math.pow (10, numZeros - digitCount).toString ().substr (1);
+    return num < 0 ? '-' + zeroString + an : zeroString + an;
+}
+
 module.exports = {
     init: function (client, deps) {
         return {
@@ -51,16 +63,37 @@ module.exports = {
                         client.error("PluginRustHelp", err.stack);
                         return format("Unknown error reached when looking up crate '%s'.", crate);
                     });
+                },
+
+                "!error": function (command) {
+                    if (command.args.length === 0) {
+                        return "Usage: !error <int>";
+                    }
+
+                    const error = Number(command.args[0]);
+
+                    if (Number.isNan(error) || Math.floor(error) !== error || error < 1 || error > 9999) {
+                        return "Error code must be between 0000 and 9999.";
+                    }
+
+                    return format("https://doc.rust-lang.org/error-index.html#E%s", zeroPad(error, 4));
                 }
             },
 
-            commands: ["crate"],
+            commands: ["crate", "error"],
 
             help: {
                 "crate": [
                     "{{!}}crate <crate-name>",
                     "",
                     "Return basic metadata about the crate."
+                ],
+
+                "error": [
+                    "{{!}}error <error-code>",
+                    "",
+                    "Return link to the specified error.",
+                    "Ex: {{!}}error 303"
                 ]
             }
         };
