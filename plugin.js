@@ -72,7 +72,7 @@ module.exports = {
 
                     const error = Number(command.args[0]);
 
-                    if (Number.isNan(error) || Math.floor(error) !== error || error < 1 || error > 9999) {
+                    if (isNaN(error) || Math.floor(error) !== error || error < 1 || error > 9999) {
                         return "Error code must be between 0000 and 9999.";
                     }
 
