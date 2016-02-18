@@ -52,7 +52,7 @@ module.exports = {
                         // When the create exists, but all versions are yanked, the description becomes null?
                         // Note(Havvy): This is probably wrong. Just basing off of rust-bindgen package.
                         if (crateInfo.crate.description === null) {
-                            return format("Crate '%s' was yanked.")
+                            return format("Crate '%s' was yanked.", crateInfo.crate.id);
                         }
 
                         // When the crate does exist, we'll get the following document:
