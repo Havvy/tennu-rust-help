@@ -59,7 +59,7 @@ module.exports = {
                         // { crate: { id: "", max_version: "", description: "Description\n", ... }, ... }
                         const id = crateInfo.crate.id;
                         const version = crateInfo.crate.max_version;
-                        const description = crateInfo.crate.description.replace(/\n/g, "");
+                        const description = crateInfo.crate.description.replace(/\n/g, " ");
                         const url = format("https://crates.io/crates/%s", id);
 
                         return format("%s (%s) - %s -> %s", id, version, description, url);
