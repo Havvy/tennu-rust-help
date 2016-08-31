@@ -61,8 +61,9 @@ module.exports = {
                         const version = crateInfo.crate.max_version;
                         const description = crateInfo.crate.description.replace(/\n/g, " ");
                         const url = format("https://crates.io/crates/%s", id);
+                        const docurl = format("https://docs.rs/crate/%s", id);
 
-                        return format("%s (%s) - %s -> %s", id, version, description, url);
+                        return format("%s (%s) - %s -> %s (%s)", id, version, description, url, docurl);
                     })
                     .catch(function (err) {
                         client.error("PluginRustHelp", err.name);
