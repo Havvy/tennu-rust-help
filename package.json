@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/Havvy/tennu-rust-help",
   "dependencies": {
-    "bluebird": "^2.9.25",
+    "bluebird": "^3",
     "node-fetch": "^1.2.1"
   }
 }
