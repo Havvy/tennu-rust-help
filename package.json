@@ -1,6 +1,6 @@
 {
   "name": "tennu-rust-help",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Tennu plugin providing commands for learning Rust.",
   "main": "plugin.js",
   "scripts": {
